@@ -6,6 +6,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
+console.log('here');
 
 var ENV = process.env.npm_lifecycle_event;
 var isTest = ENV === 'test' || ENV === 'tdd';
