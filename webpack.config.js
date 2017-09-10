@@ -6,8 +6,6 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-console.log('here');
-
 var ENV = process.env.npm_lifecycle_event;
 var isTest = ENV === 'test' || ENV === 'tdd';
 var isProd = ENV === 'build';
@@ -86,26 +84,9 @@ module.exports = function makeWebpackConfig() {
       loader: 'babel-loader',
       exclude: /node_modules/
     }, {
-      // CSS LOADER
-      // Reference: https://github.com/webpack/css-loader
-      // Allow loading css through js
-      //
-      // Reference: https://github.com/postcss/postcss-loader
-      // Postprocess your css with PostCSS plugins
-      test: /\.css$/,
-      // Reference: https://github.com/webpack/extract-text-webpack-plugin
-      // Extract css files in production builds
-      //
-      // Reference: https://github.com/webpack/style-loader
-      // Use style-loader in development.
+      test: /\.scss$/,
+      loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader' })
 
-      loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
-        loader: [
-          {loader: 'css-loader', query: {sourceMap: true}},
-          {loader: 'postcss-loader'}
-        ],
-      })
     }, {
       // ASSET LOADER
       // Reference: https://github.com/webpack/file-loader

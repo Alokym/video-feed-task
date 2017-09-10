@@ -1,22 +1,39 @@
+import 'bootstrap';
 import angular from 'angular';
+
+//TODO MP: consider moving video components to one folder
+import VideoItemComponent from '../video-item/video-item.js'
+import YoutubeVideo from '../youtube-video/youtube-video.js'
+import FbVideo from '../fb-video/fb-video.js'
+import UrlVideo from '../url-video/url-video.js'
+
+import ViewsFilter from '../video-item/view-number-formatter.filter.js'
+
+import AppService from './app.service.js'
 
 import './app.scss';
 
+//TODO MP: learn everything about export
+//TODO MP: consider making app just an entry point, probably make videofeed component?
+//TODO MP: write unit tests
+
 class AppController {
+  constructor(AppService) {
+    //TODO MP: 'ngInject'?
+    'ngInject';
+
+    this.AppService = AppService;
+  }
+
   $onInit() {
-    this.message = 'It works!';
-
-    fetch('https://cdn.playbuzz.com/content/feed/items')
-      .then(res => res.json())
-      .then(feed => console.log(feed));
-
-	//URL http://cdn.playbuzz.com/content/feed/video-1.mp4
-	//Facebook 1052114818157758
-	//Youtube h8MbhS5XKow
+     this.AppService.fetchVideoFeed()
+      .then(videoItems => {
+        this.videoItems = videoItems
+      });
   }
 }
 
-let app = {
+const app = {
   template: require('./app.html'),
   controller: AppController
 };
@@ -24,6 +41,14 @@ let app = {
 const MODULE_NAME = 'pbVideoFeed';
 
 angular.module(MODULE_NAME, [])
-  .component('app', app);
+  .component('videoItem', VideoItemComponent)
+  .component('youtubeVideo', YoutubeVideo)
+  .component('urlVideo', UrlVideo)
+  .component('fbVideo', FbVideo)
+  .component('app', app)
+
+  .service('AppService', AppService)
+
+  .filter('viewsFilter', ViewsFilter);
 
 export default MODULE_NAME;

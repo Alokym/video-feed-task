@@ -1,15 +1,20 @@
-# Video Feed Exercise Skeleton
+# Video feed task solution
 
-This repo is a seed project for video feed exercise.
+This is a solution for a video feed from different sources. It is capable of displaying videos from Facebook, Youtube and by url.
+Also, it has a built in possibility to ensure that Youtube video is a valid one.
 
-## Quick start
+## Online demo
+
+Feel free to try [online demo](https://alokym.github.io/video-feed-dist/) on Github pages
+
+## Launching on your local machine
 
 ```bash
 # clone the repo
-$ git clone git@github.com:playbuzz/exercise-video-feed.git
+$ git clone https://github.com/Alokym/video-feed-task.git
 
 # cd inside
-$ cd exercise-video-feed
+$ cd video-feed-task
 
 # install dependencies
 $ npm install
@@ -17,17 +22,3 @@ $ npm install
 # start the server
 $ npm start
 ```
-
-Open [http://localhost:8080](http://localhost:8080) in your browser.
-
-## Testing
-
-```bash
-# single test run
-$ npm test
-
-# tdd cycle
-$ npm tdd
-```
-
-Good luck!
