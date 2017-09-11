@@ -86,7 +86,6 @@ module.exports = function makeWebpackConfig() {
     }, {
       test: /\.scss$/,
       loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader' })
-
     }, {
       // ASSET LOADER
       // Reference: https://github.com/webpack/file-loader
@@ -145,7 +144,16 @@ module.exports = function makeWebpackConfig() {
           plugins: [autoprefixer]
         }
       }
-    })
+    }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
+    }),
+    // Reference: https://github.com/webpack/extract-text-webpack-plugin
+    // Extract css files
+    // Disabled when in test mode or not in build mode
+    new ExtractTextPlugin({filename: 'css/[name].css', disable: !isProd, allChunks: true})
   ];
 
   // Skip rendering index.html in test mode
@@ -156,12 +164,7 @@ module.exports = function makeWebpackConfig() {
       new HtmlWebpackPlugin({
         template: './src/public/index.html',
         inject: 'body'
-      }),
-
-      // Reference: https://github.com/webpack/extract-text-webpack-plugin
-      // Extract css files
-      // Disabled when in test mode or not in build mode
-      new ExtractTextPlugin({filename: 'css/[name].css', disable: !isProd, allChunks: true})
+      })
     )
   }
 

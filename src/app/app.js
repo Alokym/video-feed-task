@@ -1,7 +1,5 @@
-import 'bootstrap';
 import angular from 'angular';
 
-//TODO MP: consider moving video components to one folder
 import VideoItemComponent from '../video-item/video-item.js'
 import YoutubeVideo from '../youtube-video/youtube-video.js'
 import FbVideo from '../fb-video/fb-video.js'
@@ -13,13 +11,8 @@ import AppService from './app.service.js'
 
 import './app.scss';
 
-//TODO MP: learn everything about export
-//TODO MP: consider making app just an entry point, probably make videofeed component?
-//TODO MP: write unit tests
-
 class AppController {
   constructor(AppService) {
-    //TODO MP: 'ngInject'?
     'ngInject';
 
     this.AppService = AppService;

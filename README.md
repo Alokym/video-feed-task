@@ -1,7 +1,7 @@
 # Video feed task solution
 
 This is a solution for a video feed from different sources. It is capable of displaying videos from Facebook, Youtube and by url.
-Also, it has a built in possibility to ensure that Youtube video is a valid one.
+Also, it has a built in possibility to ensure that Youtube video is a valid one. All requirements are covered with corresponding unit tests.
 
 ## Online demo
 

@@ -2,7 +2,6 @@
 	<div class="panel-heading">
 		<p class="pull-left" ng-bind="$ctrl.video.title || 'Unknown title'"></p>
 		&nbsp;
-		<!-- TODO MP: format num of views output -->
 		<p class="pull-right" ng-bind="$ctrl.video.views | viewsFilter"></p>
 	</div>
 	<div class="panel-body nopadding bottom-margin-fix" ng-switch="$ctrl.video.source">

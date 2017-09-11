@@ -22,7 +22,6 @@ class VideoController {
 	}
 }
 
-//TODO MP: check youtube video existing
 const YoutubeVideo = {
 	template: require('./youtube-video.html'),
 	controller: VideoController,

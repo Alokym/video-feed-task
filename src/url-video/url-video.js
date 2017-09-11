@@ -10,7 +10,6 @@ class VideoController {
 	}
 }
 
-//TODO MP: check youtube video existing
 const UrlVideo = {
 	template: require('./url-video.html'),
 	controller: VideoController,

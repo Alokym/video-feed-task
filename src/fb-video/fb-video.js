@@ -8,7 +8,6 @@ class VideoController {
 	}
 }
 
-//TODO MP: check youtube video existing
 const FbVideo = {
 	template: require('./fb-video.html'),
 	controller: VideoController,
